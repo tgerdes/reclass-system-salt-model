@@ -1,0 +1,27 @@
+parameters:
+  keystone:
+    client:
+      server:
+        identity:
+          project:
+            service:
+              user:
+                ironic:
+                  is_admin: true
+                  password: ${_param:keystone_heat_password}
+                  email: ${_param:admin_email}
+          service:
+            ironic:
+              type: baremetal
+              description: Ironic bare metal provisioning service
+              endpoints:
+              - region: ${_param:openstack_region}
+                public_address: ${_param:heat_service_host}
+                public_port: 6385
+                public_path: '/'
+                internal_address: ${_param:heat_service_host}
+                internal_port: 6385
+                internal_path: '/'
+                admin_address: ${_param:heat_service_host}
+                admin_port: 6385
+                admin_path: '/'
