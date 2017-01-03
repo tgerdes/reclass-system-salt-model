@@ -100,3 +100,16 @@ parameters:
               source: git
               address: 'https://github.com/openstack/salt-formula-swift.git'
               revision: ${_param:salt_master_environment_revision}
+            tftpd-hpa:
+              source: git
+              address: '${_param:salt_master_environment_repository}/salt-formula-tftpd-hpa.git'
+              revision: ${_param:salt_master_environment_revision}
+            isc-dhcp:
+              source: git
+              address: '${_param:salt_master_environment_repository}/salt-formula-isc-dhcp.git'
+              revision: ${_param:salt_master_environment_revision}
+            ironic:
+              source: git
+              address: '${_param:salt_master_environment_repository}/salt-formula-ironic.git'
+              revision: ${_param:salt_master_environment_revision}
+
