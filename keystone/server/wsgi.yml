@@ -1,6 +1,13 @@
 classes:
 - system.apache.server.single
 parameters:
+  _param:
+    keystone_server_apache_pkgs:
+        - apache2
+        #- libapache2-mod-shib2
+    keystone_server_apache_modules:
+        - wsgi
+        #- shib2
   keystone:
     server:
       service_name: apache2
@@ -15,5 +22,5 @@ parameters:
           name: wsgi
           host:
             name: ${linux:network:fqdn}
-      modules:
-        - wsgi
+      pkgs: ${_param:keystone_server_apache_pkgs}
+      modules: ${_param:keystone_server_apache_modules}

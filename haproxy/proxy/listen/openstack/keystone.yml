@@ -3,8 +3,16 @@ parameters:
     proxy:
       listen:
         keystone_public_api:
-          type: openstack-service
-          service_name: keystone
+          #type: openstack-service
+          #service_name: keystone
+          mode: http
+          options:
+            - httpchk
+            - httpclose
+            - httplog
+          sticks:
+            - stick on src
+            - stick-table type ip size 200k expire 2m
           binds:
           - address: ${_param:cluster_vip_address}
             port: 5000
@@ -22,11 +30,21 @@ parameters:
             port: 5000
             params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
         keystone_admin_api:
-          type: openstack-service
-          service_name: keystone
+          #type: openstack-service
+          #service_name: keystone
+          mode: http
+          options:
+            - httpchk
+            - httpclose
+            - httplog
+          sticks:
+            - stick on src
+            - stick-table type ip size 200k expire 2m
           binds:
           - address: ${_param:cluster_vip_address}
             port: 35357
+            ssl:
+              enabled: false
           servers:
           - name: ctl01
             host: ${_param:cluster_node01_address}
