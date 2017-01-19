@@ -1,0 +1,61 @@
+classes:
+- system.linux.system.repo_local.mos8
+- system.linux.system.repo_local.tcp-oc30
+- system.memcached.server.single
+- system.keystone.server.cluster
+- system.glance.control.cluster
+- system.nova.control.cluster
+- system.cinder.control.cluster
+- system.heat.server.cluster
+- system.heat.server.resource.contrail
+- system.heat.server.resource.salt
+- system.glusterfs.client.cluster
+- system.glusterfs.client.volume.glance
+- system.glusterfs.client.volume.keystone
+- system.ceilometer.client
+- cluster.ci_infra
+parameters:
+  _param:
+    keepalived_vip_interface: eth1
+    keepalived_vip_virtual_router_id: 50
+    cluster_vip_address: ${_param:openstack_control_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: ctl01
+    cluster_node01_address: ${_param:openstack_control_node01_address}
+    cluster_node02_hostname: ctl02
+    cluster_node02_address: ${_param:openstack_control_node02_address}
+    cluster_node03_hostname: ctl03
+    cluster_node03_address: ${_param:openstack_control_node03_address}
+    nova_vncproxy_url: http://${_param:openstack_proxy_address}:6080
+  linux:
+    network:
+      interface:
+        eth0: ${_param:linux_dhcp_interface}
+        eth1: ${_param:linux_single_interface}
+  opencontrail:
+    client:
+      enabled: true
+      identity:
+        user: admin
+        password: ${_param:keystone_admin_password}
+        tenant: admin
+        host: ${_param:openstack_control_address}
+      api:
+        host: ${_param:opencontrail_control_address}
+        port: 8082
+  cinder:
+    controller:
+      backend:
+        hitachi_vsp:
+          backend: hitachi_vsp
+          type_name: hitachi_vsp
+          engine: hitachi_vsp
+          version: 1.3
+          user: ${_param:cinder_storage_user}
+          password: ${_param:cinder_storage_password}
+          storage_id: ${_param:cinder_storage_id}
+          thin_pool_id: ${_param:cinder_thin_pool_id}
+          pool_id: ${_param:cinder_pool_id}
+          target_ports: ${_param:cinder_target_ports}
+          compute_target_ports: ${_param:cinder_target_compute_ports}
+          ldev_range: ${_param:cinder_ldev_range}

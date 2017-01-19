@@ -1,0 +1,34 @@
+classes:
+- system.linux.system.repo_local.tcp-liberty
+- system.openssh.client.lab
+- system.nginx.server.single
+- system.nginx.server.proxy.opencontrail_web
+- system.nginx.server.proxy.openstack_api
+- system.nginx.server.proxy.openstack_vnc
+- system.nginx.server.proxy.openstack_web
+- system.horizon.server.single
+- system.heat.client
+- system.salt.minion.cert.proxy
+- system.sphinx.server.doc.reclass
+- service.keepalived.cluster.single
+- cluster.ci_infra.openstack.dashboard
+- cluster.ci_infra.stacklight.proxy
+- cluster.ci_infra
+parameters:
+  _param:
+    keepalived_vip_interface: eth1
+    keepalived_vip_virtual_router_id: 240
+    nginx_proxy_ssl:
+      enabled: true
+      authority: mk_lab_ca
+      engine: salt
+      mode: secure
+    salt_minion_ca_host: cfg01.${_param:cluster_domain}
+    cluster_vip_address: ${_param:openstack_proxy_address}
+    heat_data_repository: git@git01.infra.ci.local:heat-templates/acme-templates.git
+    heat_data_revision: master
+  linux:
+    network:
+      interface:
+        eth0: ${_param:linux_dhcp_interface}
+        eth1: ${_param:linux_single_interface}

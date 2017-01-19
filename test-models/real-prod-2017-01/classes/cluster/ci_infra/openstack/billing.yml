@@ -1,0 +1,12 @@
+classes:
+- system.linux.system.repo_local.mos8
+- system.graphite.server.single
+- system.graphite.collector.single
+- system.billometer.server.single
+- cluster.ci_infra
+parameters:
+  linux:
+    network:
+      interface:
+        eth0: ${_param:linux_dhcp_interface}
+        eth1: ${_param:linux_single_interface}

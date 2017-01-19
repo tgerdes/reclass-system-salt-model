@@ -1,0 +1,22 @@
+parameters:
+  linux:
+    system:
+      user:
+        acme:
+          enabled: true
+          name: acme
+          sudo: false
+          full_name: Shared Acme
+          home: /home/acme
+  openssh:
+    server:
+      enabled: true
+      user:
+        acme:
+          enabled: true
+          public_keys:
+          - ${public_keys:acme}
+          user: ${linux:system:user:acme}
+  public_keys:
+    acme:
+      key: ssh-rsa AAAAB3lksdjfjlkjdfkjdsaft5gBgPoMNOgbLf/si82pfZXKW0Qj56tAjUW6wBJytRO5KjDMv0OQxaH81taw25

@@ -1,0 +1,210 @@
+classes:
+- system.linux.system.repo_local.salt_formulas
+- system.openssh.client.lab
+- system.salt.master.git
+- system.salt.master.formula.git.foundation
+- system.salt.minion.ca.salt_master
+- system.reclass.storage.salt
+- system.reclass.storage.system.physical_control_cluster
+- system.reclass.storage.system.opencontrail_analytics_cluster
+- system.reclass.storage.system.opencontrail_control_cluster
+- system.reclass.storage.system.openstack_control_cluster
+- system.reclass.storage.system.openstack_proxy_cluster
+- system.reclass.storage.system.openstack_database_cluster
+- system.reclass.storage.system.openstack_message_queue_cluster
+- system.reclass.storage.system.openstack_telemetry_cluster
+- system.reclass.storage.system.openstack_billing_single
+- system.reclass.storage.system.stacklight_log_cluster
+- system.reclass.storage.system.stacklight_monitor_cluster
+- system.reclass.storage.system.stacklight_telemetry_cluster
+- cluster.ci_infra
+parameters:
+  _param:
+    salt_master_base_environment: dev
+    reclass_data_repository: git@git01.infra.ci.local:reclass-models/acme-salt-model.git
+    salt_master_environment_repository: "https://github.com/tcpcloud"
+    reclass_data_revision: master
+    reclass_config_master: ${_param:infra_config_deploy_address}
+    single_address: ${_param:infra_config_address}
+    deploy_address: ${_param:infra_config_deploy_address}
+    salt_master_host: ${_param:infra_config_address}
+  salt:
+    master:
+      environment:
+        dev:
+          formula:
+            gitlab:
+              module:
+                gitlab.py:
+                  enabled: true
+              state:
+                gitlab.py:
+                  enabled: true
+              source: git
+              address: '${_param:salt_master_environment_repository}/salt-formula-gitlab.git'
+              revision: ${_param:salt_master_environment_revision}
+  openssh:
+    client:
+      user:
+        root:
+          enabled: true
+          user: ${linux:system:user:root}
+          private_key: ${private_keys:cluster_private_key}
+  private_keys: 
+    cluster_private_key:
+      type: rsa
+      key: |
+        -----BEGIN RSA PRIVATE KEY-----
+        MIIEowIBAAKCAQEAxL6/rVgCetsETpZaUmXmkj8cZ1WN0eubH1FvMDOi/La9ZJyT
+        k0C6AYpJnIyEm93pMj5cLm08qRqMW+2pdOhYjcH69yg5MrX5SkRk8jCmIHIYoIbh
+        lrJ3xjFTXj4b4Ws1XIoy78fFbtiLr4OwqCYkho03u2E5rOOP1qZxZB63sivHMLMO
+        MM5bOAQKbulFNoyALADGYfc7sf0bZ4u9XXDXxQIDAQABAoIBAQCfmc2MJRT97KW1
+        yqpCpX9BrAiymuiNHf                           ba1anM92vCUiPDojSzH
+        yqpCpX9BrAiymuiNHf          FIXME            ba1anM92vCUiPDojSzH
+        yqpCpX9BrAiymuiNHf                           ba1anM92vCUiPDojSzH
+        SvqmsC3S/1zl77X1Ir2/Z57MT6Vgo1xBmtnZU3Rhz2/eKAdqFPNLClaZrgGT475N
+        HcyLLWMzR0IJFtabY+Puea0CgYA8Zb5wRkldxWLewSuJZZDinGwY+kieAVjLJq/K
+        erhSkQKBgFIf9JEsfgE57ANhvITZ3ZI0uZXNxZkXQaVg8jvScDi79IIhy9iPzhKC
+        aIIQoDNIlWv1ftCRZ5AlBvVXgvQ/QNrwy48JiQTzWZlb9Ezg8w+olQmSbG6fq7Y+
+        7r3i+QUZ7RBdOb24QcQ618q54ozNTCB7OywY78ptFzeoBeptiNr1
+        -----END RSA PRIVATE KEY-----
+  reclass:
+    storage:
+      node:
+        infra_benchmark_node01:
+          name: bmk01
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.infra.benchmark
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:infra_benchmark_node01_single_address}
+        infra_integration_node01:
+          name: cid01
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.infra.integration
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: xenial
+            single_address: ${_param:infra_integration_node01_single_address}
+        infra_version_control_node01:
+          name: git01
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.infra.version_control
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: xenial
+            single_address: ${_param:infra_version_control_node01_single_address}
+        infra_storage_node01:
+          name: sto01
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.infra.storage
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: xenial
+            single_address: ${_param:infra_storage_node01_single_address}
+        openstack_control_node01:
+          classes:
+          - cluster.${_param:cluster_name}.openstack.control_init
+        openstack_database_node01:
+          classes:
+          - cluster.${_param:cluster_name}.openstack.database_init
+        openstack_compute_node01:
+          name: cmp001
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.compute
+          - system.cinder.volume.single
+          - system.cinder.volume.backend.hitashi_vsp
+          - system.ceilometer.client.cinder_volume
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            control_address: ${_param:openstack_compute_node01_control_address}
+            single_address: ${_param:openstack_compute_node01_single_address}
+          parameters:
+            cinder:
+              volume:
+                backend:
+                  hitachi_vsp:
+                    ldev_range: ${_param:cinder_ldev_range}
+        openstack_compute_node02:
+          name: cmp002
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            control_address: ${_param:openstack_compute_node02_control_address}
+            single_address: ${_param:openstack_compute_node02_single_address}
+        openstack_compute_node03:
+          name: cmp003
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            control_address: ${_param:openstack_compute_node03_control_address}
+            single_address: ${_param:openstack_compute_node03_single_address}
+        openstack_compute_node04:
+          name: cmp004
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            control_address: ${_param:openstack_compute_node04_control_address}
+            single_address: ${_param:openstack_compute_node04_single_address}
+        openstack_compute_node05:
+          name: cmp005
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            control_address: ${_param:openstack_compute_node05_control_address}
+            single_address: ${_param:openstack_compute_node05_single_address}
+        infra_compute_node01:
+          params:
+            deploy_address: ${_param:infra_compute_node01_deploy_address}
+            single_address: ${_param:infra_compute_node01_address}
+            data_address: ${_param:infra_compute_node01_data_address}
+            instance_storage_disk: 360060e80165088000001508800000601
+            second_local_disk: /dev/sdb
+            storage_size: 1.5T
+            keepalived_vip_priority: 101
+        infra_compute_node02:
+          params:
+            deploy_address: ${_param:infra_compute_node02_deploy_address}
+            single_address: ${_param:infra_compute_node02_address}
+            data_address: ${_param:infra_compute_node02_data_address}
+            instance_storage_disk: 360060e80165088000001508800000602
+            second_local_disk: /dev/sdb
+            storage_size: 2T
+            keepalived_vip_priority: 102
+        infra_compute_node03:
+          params:
+            deploy_address: ${_param:infra_compute_node03_deploy_address}
+            single_address: ${_param:infra_compute_node03_address}
+            data_address: ${_param:infra_compute_node03_data_address}
+            instance_storage_disk: 360060e80165088000001508800000603
+            second_local_disk: /dev/sdb
+            storage_size: 2T
+            keepalived_vip_priority: 103
+        opencontrail_control_node01:
+          params:
+            data_address: ${_param:opencontrail_control_node01_data_address}
+        opencontrail_control_node02:
+          params:
+            data_address: ${_param:opencontrail_control_node02_data_address}
+        opencontrail_control_node03:
+          params:
+            data_address: ${_param:opencontrail_control_node03_data_address}

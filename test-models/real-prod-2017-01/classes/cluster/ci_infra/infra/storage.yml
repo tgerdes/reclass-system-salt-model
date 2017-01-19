@@ -1,0 +1,69 @@
+classes:
+- system.aptly.server.single
+#Trusty
+- system.aptly.server.mirror.ubuntu.trusty.salt
+- system.aptly.server.mirror.ubuntu.trusty.mos8
+- system.aptly.server.mirror.ubuntu.trusty.ubuntu
+- system.aptly.server.mirror.ubuntu.trusty.ubuntucloud
+- system.aptly.server.mirror.ubuntu.trusty.grafana
+- system.aptly.server.mirror.ubuntu.trusty.tcpcloud
+#Xenial
+- system.aptly.server.mirror.ubuntu.xenial.salt
+- system.aptly.server.mirror.ubuntu.xenial.ubuntu
+- system.aptly.server.mirror.ubuntu.xenial.tcpcloud
+- system.aptly.server.mirror.ubuntu.xenial.grafana
+- system.aptly.server.mirror.ubuntu.xenial.influxdb
+- cluster.ci_infra
+parameters:
+  _param:
+    aptly_gpg_passphrase: 
+    aptly_gpg_keypair_id: 85553E70
+    aptly_gpg_public_key: |
+      -----BEGIN PGP PUBLIC KEY BLOCK-----
+      Version: GnuPG v1
+
+        mQINBFhSZ7wBEADST7Ye5jy8K6VG4i8g23jMzkD3VyfIMkxnv52XTaIL/0+WnsGh
+        8skJWvfkHmNGIXeEcJGwfSFRM4RGn1e4GwvTNi84ErKAPnCk+zcshFeAgNnEWgjh
+        Ct31136puEszz8wjQg1jsWVCgamaJTbbHeqj9OK+0TXzM1y3i9Sb7IOqeYhfVpfT
+        e6Md9GHmuERVSbmfxo9hsPQvuSCVHtC9gPZkCS5+kerF2uYV/MyDAtvuqhJuA9Hi
+        iJxT9fb+Cocj2bAHqrXNg6nhTdtQgIEjWYCztKh6sxGOcwijwHC7sJMbf5BrI3yF
+        NeqlXV4mLKtrolSk                             /Txt+ZnScQI1C6Rr9SV
+        NeqlXV4mLKtrolSk        FIXME                /Txt+ZnScQI1C6Rr9SV
+        NeqlXV4mLKtrolSk                             /Txt+ZnScQI1C6Rr9SV
+        giMXC5qHeXNsAP40zNIny7C7g+D9b0OyL3A/sAHQa6HniqJUE3mqcWCmn7820MxI
+        5F8oobERbMGqUyiUfelA8I8Z7EI/KYpoGgFnckVX87qOQEDt7CwMe43qs4YDJHx5
+        HTt6qFTaRY5iJmZhYpoDhh/gMMkdvBi0N/GcZNBJloyh5jdJ9dU59gCwJdnzTpPu
+        AuTOr30M5BFTlIYNIIG9SWv6ey88QrCBI+M1SSnMvoxe9wlvgO2P61MWL82vcB7/
+        xUPcb8bZ0Ka37MlWgStYVhcL/s+V8LwLijRRc7LeyNvYHmKVb4GIuo2Lilt37fmE
+        SwsKUSnoaWAy4SACngDlDN3S4LTNQhh5tiWMoRVHIp8dKRMAOMTvwClD6pikxtY4
+        bxr6Yx6m2+XmluNMiixANhU+qPcCDIJcmlSe1uh3eWHTdfKUh3Vp0pP6B84=
+        =JHnK
+        -----END PGP PUBLIC KEY BLOCK-----
+    aptly_gpg_private_key: |
+      -----BEGIN PGP PRIVATE KEY BLOCK-----
+      Version: GnuPG v1
+
+        lQcYBFhSZ7wBEADST7Ye5jy8K6VG4i8g23jMzkD3VyfIMkxnv52XTaIL/0+WnsGh
+        8skJWvfkHmNGIXeEcJGwfSFRM4RGn1e4GwvTNi84ErKAPnCk+zcshFeAgNnEWgjh
+        Ct31136puEszz8wjQg1jsWVCgamaJTbbHeqj9OK+0TXzM1y3i9Sb7IOqeYhfVpfT
+        1GlHuoWJtejSa188MBBRhJeWR7PsPvZW2YPhl6RrY394Lihqd2Vo3uSsGQARAQAB
+        AA/+PJFMR9XSw/Zl4OYe4H2UapczyofFIzipHG/ouLxY4M+kYiJSbYt4LkOOhJnj
+        yTy2KOQqcQN4ZuRJQfV9072mSCugqato0NoqorjeiOmMMavqC0xKplT022o2RjaX
+        NeqlXV4mLKtrolSk                             /Txt+ZnScQI1C6Rr9SV
+        NeqlXV4mLKtrolSk        FIXME                /Txt+ZnScQI1C6Rr9SV
+        NeqlXV4mLKtrolSk                             /Txt+ZnScQI1C6Rr9SV
+        IdLEXZsWNBHQsbiZ2ZTCGZSiEJnj+0RRHzs5hnq0vjr9KElb5ukPTI6cyXGqCEIl
+        G9LhrIwImv/VMzFDmu6G+yx6yRCD3Vu0m0qRXN+zHj/iivdb22cqOO1S6DM78Kmj
+        hcWZlnupZAh5EjPT53k6t619DUQICV4svjOO12oCjWsq0o6ITvKnV80n6CxTHyXY
+        ZmFimgOGH+AwyR28GLQ38Zxk0EmWjKHmN0n11Tn2ALAl2fNOk+4C5M6vfQzkEVOU
+        hg0ggb1Ja/p7LzxCsIEj4zVJKcy+jF73CW+A7Y/rUxYvza9wHv/FQ9xvxtnQprfs
+        yVaBK1hWFwv+z5XwvAuKNFFzst7I29geYpVvgYi6jYuKW3ft+YRLCwpRKehpYDLh
+        IAKeAOUM3dLgtM1CGHm2JYyhFUcinx0pEwA4xO/AKUPqmKTG1jhvGvpjHqbb5eaW
+        40yKLEA2FT6o9wIMglyaVJ7W6Hd5YdN18pSHdWnSk/oHzg==
+        =Gxzc
+        -----END PGP PRIVATE KEY BLOCK-----
+  linux:
+    network:
+      interface:
+        ens2: ${_param:linux_dhcp_interface}
+        ens3: ${_param:linux_single_interface}

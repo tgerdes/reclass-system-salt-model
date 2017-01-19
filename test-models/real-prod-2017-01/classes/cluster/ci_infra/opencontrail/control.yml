@@ -1,0 +1,37 @@
+classes:
+- system.linux.system.repo_local.mos8
+- system.linux.system.repo_local.tcp-oc30
+- system.linux.system.repo_local.tcp-extra
+- system.neutron.control.opencontrail.cluster
+- system.opencontrail.control.control
+- system.ceilometer.client.neutron
+- cluster.ci_infra
+parameters:
+  _param:
+    keepalived_vip_interface: eth1
+    keepalived_vip_virtual_router_id: 60
+    cluster_vip_address: ${_param:opencontrail_control_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: ntw01
+    cluster_node01_address: ${_param:opencontrail_control_node01_address}
+    cluster_node02_hostname: ntw02
+    cluster_node02_address: ${_param:opencontrail_control_node02_address}
+    cluster_node03_hostname: ntw03
+    cluster_node03_address: ${_param:opencontrail_control_node03_address}
+  linux:
+    network:
+      interface:
+        eth0: ${_param:linux_dhcp_interface}
+        eth1: ${_param:linux_single_interface}
+        eth2:
+          enabled: true
+          type: eth
+          proto: static
+          address: ${_param:data_address}
+          netmask: 255.255.255.0 
+      host:
+        ctl:
+          address: ${_param:openstack_control_address}
+          names:
+          - ctl
+          - ctl.${_param:cluster_domain}

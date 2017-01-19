@@ -1,0 +1,18 @@
+classes:
+- system.horizon.server.single
+- system.horizon.server.plugin.theme
+- system.horizon.server.plugin.contrail
+- system.horizon.server.plugin.heat
+- system.horizon.server.plugin.overrides
+- system.heat.client
+- cluster.ci_infra
+parameters:
+  _param:
+    horizon_site_branding: Mirantis OpenStack Dashboard
+    horizon_dashboard_theme: mirantis
+    heat_data_repository: git@git01.infra.ci.local:heat-templates/acme-templates.git
+  linux:
+    network:
+      interface:
+        eth0: ${_param:linux_dhcp_interface}
+        eth1: ${_param:linux_single_interface}

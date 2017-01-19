@@ -1,0 +1,108 @@
+classes:
+- system.linux.system.repo_local.opencontrail
+- system.linux.system.repo_local.mos8
+- system.nova.compute.cluster
+- system.opencontrail.compute.cluster
+- system.ceilometer.agent.cluster
+- system.collectd.client.output.carbon
+- cluster.ci_infra
+parameters:
+  _param:
+    cluster_vip_address: ${_param:openstack_control_address}
+    cluster_local_address: ${_param:control_address}
+    cluster_node01_hostname: ctl01
+    cluster_node01_address: ${_param:openstack_control_node01_address}
+    cluster_node02_hostname: ctl02
+    cluster_node02_address: ${_param:openstack_control_node02_address}
+    cluster_node03_hostname: ctl03
+    cluster_node03_address: ${_param:openstack_control_node03_address}
+    opencontrail_compute_address: ${_param:single_address}
+    nova_vncproxy_url: http://${_param:openstack_proxy_address}:6080
+    collectd_backend_carbon_host: ${_param:openstack_billing_address}
+    collectd_backend_carbon_port: 2023
+  linux:
+    storage:
+      enabled: true
+      multipath:
+        enabled: true
+        blacklist_devices:
+        - /dev/sda
+        backends:
+        - fujitsu_eternus_dxl
+    system:
+      package:
+        multipath-tools:
+          version: latest
+        multipath-tools-boot:
+          version: latest 
+    network:
+      interface:
+        eth1:
+          enabled: true
+          type: eth
+          proto: dhcp
+        eth2:
+          enabled: true
+          type: eth
+          proto: manual
+        eth3:
+          enabled: true
+          type: eth
+          proto: manual
+        eth4:
+          enabled: true
+          type: slave
+          master: bond0
+        eth5:
+          enabled: true
+          type: slave
+          master: bond0
+        eth6:
+          enabled: true
+          type: slave
+          master: bond1
+          mtu: 9000
+          pre_up_cmds:
+          - /sbin/ethtool --offload eth6 rx off tx off tso off gro off
+        eth7:
+          enabled: true
+          type: slave
+          master: bond1
+          mtu: 9000
+          pre_up_cmds:
+          - /sbin/ethtool --offload eth7 rx off tx off tso off gro off
+        bond0:
+          enabled: true
+          proto: static
+          type: bond
+          use_interfaces:
+          - eth4
+          - eth5
+          slaves: eth4 eth5
+          mode: active-backup
+          address: ${_param:control_address}
+          netmask: 255.255.255.0
+          gateway: 10.167.4.1
+        bond1:
+          enabled: true
+          proto: manual
+          type: bond
+          use_interfaces:
+          - eth6
+          - eth7
+          slaves: eth6 eth7
+          mode: active-backup
+          mtu: 9000
+        vhost0:
+          enabled: true
+          type: eth
+          mtu: 9000
+          address: ${_param:single_address}
+          netmask: 255.255.255.0
+          pre_up_cmds:
+          - /usr/lib/contrail/if-vhost0
+          use_interfaces:
+          - bond1
+          name_servers:
+          - 10.170.7.31
+          - 10.168.7.31

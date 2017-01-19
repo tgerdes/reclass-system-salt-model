@@ -1,0 +1,23 @@
+parameters:
+  private_keys: 
+    bear:
+      type: rsa
+      key: |
+        -----BEGIN RSA PRIVATE KEY-----
+        MIIEpAIBAAKCAQEAv5fETBymQCT+XEY9uxVADH433n0qP9+wR7GV+9HqJwws8vyQ
+        sWgNnKpi8r0pwcOXD5NBwjSfBDvq7GRbJKpd8VkQroABXRvHR1Z9pZZ95HsP/p5D
+        PhMgcg1iHx7go1r7N366qk+/JwqmwJhhi6BgVim6dYkcPdFqh1TBHTDqVCjolJiG
+        pYMkRbWqq0muJWG0AedT5XKK9HNvR9ateL8k89nF8FVyvgQi1aT0uWP/fE42dmqb
+        T8IIWOdzWyAkqmUXR                mrqr69a8vn2bMk5kEWx8P3DduAjveXs
+        VYizRpy2yJmYHoVy/    FIXME       K0cIQIDAQABAoIBAF2yKMtYD227KbGS
+        T8IIWOdzWyAkqmUXR                mrqr69a8vn2bMk5kEWx8P3DduAjveXs
+        uaWCtrLBu3cAMSeFjCH4kgpa7H6bv7zRTBGgeeNa2yRiWzxAS8LjKuzWRP2KUNk5
+        YxbcsBUisXA1lzwMHrF/LyNRIzrBE4bok/Hs/Xn31TTmj+xce8c4Vx8iqgFtl43F
+        +DgMvQKBgQDamUxwwPTrxxMSgZ+rxwbhuv81DkqGuBOMHNdGB+nfmopmYIg6f+Y3
+        k7JhM0v6Q8AzWYeKml/lrL1vXiu5S5NWcfRpTUgtNeNqGXpbdzGUohbHAC/GMRzy
+        WBqtDTgNIyvfVrE/r+XMDi3tMIJx1KWWcU454KcJVS4VXPzGVZMxFA==
+        -----END RSA PRIVATE KEY-----
+  public_keys: 
+    bear:
+      type: rsa
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/l8RMHKZAJP5cRj27FUAMfjfefSo/37BHsZX70eonDCzy/JCxaA2cqmLyvSnBw5cPk0HCNJ8EO+rsZFskql3xWRCugAFdG8dHVn2lln3kew/+nkM+EyByDWIfHuCjWvs3frqqT78nCqbAmGGLoGBWKbp1iRw90WqHVMEdMOpUKOiUmIalgyRFtaqrSa4lYbQB51Plcor0c29H1q14vyTz2cXwVXK+BCLVpPS5Y/98TjZ2aptPwghY53NbICSqZRdGZgYZOfyl+1hC1Cx2auqvr1ry+fZsyTmQRbHw/cN24CO95exViLNGnLbImZgehXL/dzC1SLuwhgfWmaRUrRwh

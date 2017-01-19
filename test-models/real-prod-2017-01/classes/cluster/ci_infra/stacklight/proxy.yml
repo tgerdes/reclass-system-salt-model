@@ -1,0 +1,4 @@
+classes:
+- system.nginx.server.proxy.stacklight.grafana
+- system.nginx.server.proxy.stacklight.kibana
+- system.nginx.server.proxy.stacklight.nagios
