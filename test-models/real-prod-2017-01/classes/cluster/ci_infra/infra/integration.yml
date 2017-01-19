@@ -44,11 +44,11 @@ parameters:
               description: "Salt master URL"
             salt_username:
               type: string
-              default: salt
+              default: "salt"
               description: "Salt master user"
-            salt_password: cloudlab
-              type: string
-              default: bear123
+            salt_password: "cloudlab"
+              typer: string
+              default: "bear123"
               description: "Salt master password"
             centos_image:
               type: choice
@@ -61,44 +61,44 @@ parameters:
               - "CentOS-6-x86_64-GenericCloud-1607"
             instance_flavor:
               type: string
-              default: m1.large
+              default: "m1.large"
               description: "Stack context: Instance flavor"
             volume_type:
               type: string
-              default: 10kThinPro
+              default: "10kThinPro"
               description: "Stack context: Volume type"
             public_net:
               type: string
-              default: inet2
+              default: "inet2"
               description: "Stack context: Network name"
             config_host:
               type: string
-              default: 10.167.0.5
+              default: "10.167.0.5"
               description: "Stack context: Configuration server"
             domain_name:
               type: string
-              default: bear-single.ci.local
+              default: "bear-single.ci.local"
               description: "Stack context: Instance domain name"
             template_repository:
               type: choice
               default: "git@ci.local:heat-templates"
               description: "Template source: Repository URL"
               choices:
-              - git@git.tcpcloud.eu:heat-templates/telekomsk-templates.git
-              - git@ci.local:heat-templates
+              - "git@git.tcpcloud.eu:heat-templates/telekomsk-templates.git"
+              - "git@ci.local:heat-templates"
             template_file:
               type: choice
-              default: template/bear_single_net.hot
+              default: "template/bear_single_net.hot"
               description: "Template source: File in repository"
               choices:
-              - template/bear_aio_net.hot
-              - template/bear_single_net.hot
-              - template/bear_cluster_net.hot
-              - template/bear_database_net.hot
-              - template/bear_search_net.hot
+              - "template/bear_aio_net.hot"
+              - "template/bear_single_net.hot"
+              - "template/bear_cluster_net.hot"
+              - "template/bear_database_net.hot"
+              - "template/bear_search_net.hot"
             template_branch:
               type: string
-              default: master
+              default: "master"
               description: "Template source: Repository branch"
             openstack_endpoint:
               type: choice
@@ -120,14 +120,14 @@ parameters:
               - tcp_wb_stg
             openstack_user:
               type: choice
-              default: developer1
+              default: "developer1"
               description: "OpenStack endpoint: Username"
               choices:
               - developer1
               - bear
             openstack_password: cloudlab
               type: choice
-              default: developer1
+              default: "developer1"
               description: "OpenStack endpoint: Password"
               choices:
               - developer1
@@ -170,7 +170,7 @@ parameters:
               description: Name of the database dump to restore
             report_email:
               type: string
-              default: akomarek@mirantis.com
+              default: "akomarek@mirantis.com"
               description: E-mail address to send the workflow results
             availability_zone:
               type: string
@@ -388,7 +388,7 @@ parameters:
               description: "Salt master user"
             salt_password: cloudlab
               type: string
-              default: bear123
+              default: "bear123"
               description: "Salt master password"
             openstack_endpoint:
               type: string
