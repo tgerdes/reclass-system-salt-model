@@ -5,7 +5,7 @@ parameters:
         salt-formula-salt:
           enabled: true
           description: Salt formula
-          upstream: https://github.com/tcpcloud/salt-formula-salt.git
+          upstream: https://github.com/salt-formulas/salt-formula-salt.git
           access:
             "refs/heads/*":
               actions:

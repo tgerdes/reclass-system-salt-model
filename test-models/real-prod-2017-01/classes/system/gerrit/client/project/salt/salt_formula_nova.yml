@@ -5,7 +5,7 @@ parameters:
         salt-formula-nova:
           enabled: true
           description: OpenStack Nova formula
-          upstream: https://github.com/openstack/salt-formula-nova.git
+          upstream: https://github.com/salt-formulas/salt-formula-nova.git
           access:
             "refs/heads/*":
               actions:

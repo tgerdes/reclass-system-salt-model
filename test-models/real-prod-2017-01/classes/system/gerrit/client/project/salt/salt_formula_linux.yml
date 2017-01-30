@@ -5,7 +5,7 @@ parameters:
         salt-formula-linux:
           enabled: true
           description: Linux formula
-          upstream: https://github.com/tcpcloud/salt-formula-linux.git
+          upstream: https://github.com/salt-formulas/salt-formula-linux.git
           access:
             "refs/heads/*":
               actions:

@@ -11,7 +11,7 @@ parameters:
     salt_minion_ca_host: cfg01.infra.ci.local
     postgresql_gitlab_password: cloudlab
     gitlab_client_host: https://git01.infra.ci.local/
-    gitlab_client_token: 2k579aU8QDJ9NsrAmbcR
+    gitlab_client_token: 2kslkdjflskdjflskjdf
   gitlab:
     client:
       enabled: true
@@ -39,41 +39,41 @@ parameters:
         # saltstack formulas
         salt-formulas/salt-formula-backupninja:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-backupninja.git
+          import_url: https://github.com/salt-formulas/salt-formula-backupninja.git
         salt-formulas/salt-formula-git:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-git.git
+          import_url: https://github.com/salt-formulas/salt-formula-git.git
         salt-formulas/salt-formula-iptables:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-iptables.git
+          import_url: https://github.com/salt-formulas/salt-formula-iptables.git
         salt-formulas/salt-formula-libvirt:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-libvirt.git
+          import_url: https://github.com/salt-formulas/salt-formula-libvirt.git
         salt-formulas/salt-formula-linux:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-linux.git
+          import_url: https://github.com/salt-formulas/salt-formula-linux.git
         salt-formulas/salt-formula-ntp:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-ntp.git
+          import_url: https://github.com/salt-formulas/salt-formula-ntp.git
         salt-formulas/salt-formula-openssh:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-openssh.git
+          import_url: https://github.com/salt-formulas/salt-formula-openssh.git
         salt-formulas/salt-formula-reclass:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-reclass.git
+          import_url: https://github.com/salt-formulas/salt-formula-reclass.git
         salt-formulas/salt-formula-salt:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-salt.git
+          import_url: https://github.com/salt-formulas/salt-formula-salt.git
         salt-formulas/salt-formula-sphinx:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-sphinx.git
+          import_url: https://github.com/salt-formulas/salt-formula-sphinx.git
         # openstack formulas
         salt-formulas/salt-formula-aodh:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-aodh.git
+          import_url: https://github.com/salt-formulas/salt-formula-aodh.git
         salt-formulas/salt-formula-billometer:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-billometer.git
+          import_url: https://github.com/salt-formulas/salt-formula-billometer.git
         salt-formulas/salt-formula-ceilometer:
           enabled: true
           import_url: https://github.com/openstack/salt-formula-ceilometer.git
@@ -82,16 +82,16 @@ parameters:
           import_url: https://github.com/openstack/salt-formula-cinder.git
         salt-formulas/salt-formula-galera:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-galera.git
+          import_url: https://github.com/salt-formulas/salt-formula-galera.git
         salt-formulas/salt-formula-glance:
           enabled: true
           import_url: https://github.com/openstack/salt-formula-glance.git
         salt-formulas/salt-formula-glusterfs:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-glusterfs.git
+          import_url: https://github.com/salt-formulas/salt-formula-glusterfs.git
         salt-formulas/salt-formula-haproxy:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-haproxy.git
+          import_url: https://github.com/salt-formulas/salt-formula-haproxy.git
         salt-formulas/salt-formula-heat:
           enabled: true
           import_url: https://github.com/openstack/salt-formula-heat.git
@@ -100,28 +100,28 @@ parameters:
           import_url: https://github.com/openstack/salt-formula-horizon.git
         salt-formulas/salt-formula-keepalived:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-keepalived.git
+          import_url: https://github.com/salt-formulas/salt-formula-keepalived.git
         salt-formulas/salt-formula-keystone:
           enabled: true
           import_url: https://github.com/openstack/salt-formula-keystone.git
         salt-formulas/salt-formula-memcached:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-memcached.git
+          import_url: https://github.com/salt-formulas/salt-formula-memcached.git
         salt-formulas/salt-formula-mongodb:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-mongodb.git
+          import_url: https://github.com/salt-formulas/salt-formula-mongodb.git
         salt-formulas/salt-formula-mysql:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-mysql.git
+          import_url: https://github.com/salt-formulas/salt-formula-mysql.git
         salt-formulas/salt-formula-murano:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-murano.git
+          import_url: https://github.com/salt-formulas/salt-formula-murano.git
         salt-formulas/salt-formula-neutron:
           enabled: true
           import_url: https://github.com/openstack/salt-formula-neutron.git
         salt-formulas/salt-formula-nginx:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-nginx.git
+          import_url: https://github.com/salt-formulas/salt-formula-nginx.git
         salt-formulas/salt-formula-nova:
           enabled: true
           import_url: https://github.com/openstack/salt-formula-nova.git
@@ -130,75 +130,75 @@ parameters:
           import_url: https://github.com/openstack/salt-formula-opencontrail.git
         salt-formulas/salt-formula-python:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-python.git
+          import_url: https://github.com/salt-formulas/salt-formula-python.git
         salt-formulas/salt-formula-rabbitmq:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-rabbitmq.git
+          import_url: https://github.com/salt-formulas/salt-formula-rabbitmq.git
         salt-formulas/salt-formula-supervisor:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-supervisor.git
+          import_url: https://github.com/salt-formulas/salt-formula-supervisor.git
         salt-formulas/salt-formula-swift:
           enabled: true
           import_url: https://github.com/openstack/salt-formula-swift.git
         # stacklight formulas
         salt-formulas/salt-formula-apache:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-apache.git
+          import_url: https://github.com/salt-formulas/salt-formula-apache.git
         salt-formulas/salt-formula-collectd:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-collectd.git
+          import_url: https://github.com/salt-formulas/salt-formula-collectd.git
         salt-formulas/salt-formula-elasticsearch:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-elasticsearch.git
+          import_url: https://github.com/salt-formulas/salt-formula-elasticsearch.git
         salt-formulas/salt-formula-grafana:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-grafana.git
+          import_url: https://github.com/salt-formulas/salt-formula-grafana.git
         salt-formulas/salt-formula-graphite:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-graphite.git
+          import_url: https://github.com/salt-formulas/salt-formula-graphite.git
         salt-formulas/salt-formula-heka:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-heka.git
+          import_url: https://github.com/salt-formulas/salt-formula-heka.git
         salt-formulas/salt-formula-influxdb:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-influxdb.git
+          import_url: https://github.com/salt-formulas/salt-formula-influxdb.git
         salt-formulas/salt-formula-java:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-java.git
+          import_url: https://github.com/salt-formulas/salt-formula-java.git
         salt-formulas/salt-formula-kibana:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-kibana.git
+          import_url: https://github.com/salt-formulas/salt-formula-kibana.git
         salt-formulas/salt-formula-nagios:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-nagios.git
+          import_url: https://github.com/salt-formulas/salt-formula-nagios.git
         salt-formulas/salt-formula-postgresql:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-postgresql.git
+          import_url: https://github.com/salt-formulas/salt-formula-postgresql.git
         salt-formulas/salt-formula-rabbitmq:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-rabbitmq.git
+          import_url: https://github.com/salt-formulas/salt-formula-rabbitmq.git
         salt-formulas/salt-formula-redis:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-redis.git
+          import_url: https://github.com/salt-formulas/salt-formula-redis.git
         salt-formulas/salt-formula-rsyslog:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-rsyslog.git
+          import_url: https://github.com/salt-formulas/salt-formula-rsyslog.git
         salt-formulas/salt-formula-sensu:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-sensu.git
+          import_url: https://github.com/salt-formulas/salt-formula-sensu.git
         # Infrastructure formulas
         salt-formulas/salt-formula-aptly:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-aptly.git
+          import_url: https://github.com/salt-formulas/salt-formula-aptly.git
         salt-formulas/salt-formula-bind:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-bind.git
+          import_url: https://github.com/salt-formulas/salt-formula-bind.git
         salt-formulas/salt-formula-gerrit:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-gerrit.git
+          import_url: https://github.com/salt-formulas/salt-formula-gerrit.git
         salt-formulas/salt-formula-jenkins:
           enabled: true
-          import_url: https://github.com/tcpcloud/salt-formula-jenkins.git
+          import_url: https://github.com/salt-formulas/salt-formula-jenkins.git
         # ST internal fomulas
         salt-formulas/salt-formula-bear:
           enabled: true
