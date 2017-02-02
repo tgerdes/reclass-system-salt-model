@@ -1,0 +1,57 @@
+classes:
+- service.shibboleth.server.cluster
+parameters:
+  _param:
+    shibboleth_server_attributes:
+      - name: sAMAccountName
+        id: sAMAccountName
+        name_format: urn:oasis:names:tc:SAML:2.0:attrname-format:basic
+      - name: USERNAME
+        id: USERNAME
+        name_format: urn:oasis:names:tc:SAML:2.0:attrname-format:basic
+      - name: EmailID
+        id: EmailID
+        name_format: urn:oasis:names:tc:SAML:2.0:attrname-format:basic
+      - name: firstname
+        id: firstname
+        name_format: urn:oasis:names:tc:SAML:2.0:attrname-format:basic
+      - name: lastname
+        id: lastname
+        name_format: urn:oasis:names:tc:SAML:2.0:attrname-format:basic
+      - name: USER_LOGIN
+        id: USER_LOGIN
+        name_format: urn:oasis:names:tc:SAML:2.0:attrname-format:basic
+      - name: USER_NAME_FULL
+        id: USER_NAME_FULL
+        name_format: urn:oasis:names:tc:SAML:2.0:attrname-format:basic
+      - name: emailAddress
+        id: emailAddress
+        name_format: urn:oasis:names:tc:SAML:2.0:attrname-format:basic
+      - name: mail
+        id: mail
+        name_format: urn:oasis:names:tc:SAML:2.0:attrname-format:basic
+      - name: USER_ROLE
+        id: USER_ROLE
+        name_format: urn:oasis:names:tc:SAML:2.0:attrname-format:basic
+  keystone:
+    server:
+      websso:
+        protocol: saml2
+        remote_id_attribute: Shib-Identity-Provider
+        federation_driver: keystone.contrib.federation.backends.sql.Federation
+        trusted_dashboard:
+          - https://${_param:cluster_public_host}/auth/websso/
+          - https://${_param:proxy_vip_host}/auth/websso/
+  shibboleth:
+    server:
+      # NOTE: Override these defaults with site specific configuration on the cluster level
+      idp_url: "https://saml:8080/openam"
+      idp_metadata_url: "https://saml:8080/openam/saml2/jsp/exportmetadata.jsp"
+      attributes: ${_param: shibboleth_server_attributes}
+  apache:
+    server:
+      pkgs:
+      - libapache2-mod-shib2
+      modules:
+      - shib2
+
