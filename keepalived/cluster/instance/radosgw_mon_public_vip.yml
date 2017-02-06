@@ -8,8 +8,8 @@ parameters:
       enabled: true
       instance:
         radosgw_mon_public_vip:
-          address: ${_param:keepalived_radosgw_mon_public_vip_address}
-          password: ${_param:keepalived_radosgw_mon_public_vip_password}
-          interface: ${_param:keepalived_radosgw_mon_public_vip_interface}
+          address: ${_param:keepalived_radosgw_mon_host_public}
+          password: ${_param:keepalived_radosgw_mon_host_public}
+          interface: ${_param:keepalived_radosgw_mon_vip_interface_public}
           virtual_router_id: 233
           priority: ${_param:keepalived_vip_priority}
