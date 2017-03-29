@@ -44,7 +44,6 @@ parameters:
           - https://${_param:proxy_vip_host}/auth/websso/
   shibboleth:
     server:
-      # NOTE: Override these defaults with site specific configuration on the cluster level
       idp_url: "https://saml:8080/openam"
       idp_metadata_url: "https://saml:8080/openam/saml2/jsp/exportmetadata.jsp"
       attributes: ${_param: shibboleth_server_attributes}
