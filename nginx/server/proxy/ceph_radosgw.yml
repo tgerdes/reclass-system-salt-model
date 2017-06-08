@@ -1,6 +1,7 @@
 parameters:
   _param:
     nginx_proxy_radosgw_host: ${_param:cluster_public_host}
+    nginx_proxy_radosgw_port: 8081
   nginx:
     server:
       enabled: true
@@ -11,5 +12,5 @@ parameters:
           name: ceph_radosgw
           host:
             name: ${_param:nginx_proxy_radosgw_host}
-            port: 8080
+            port: ${_param:nginx_proxy_radosgw_port}
           ssl: ${_param:nginx_proxy_ssl}
